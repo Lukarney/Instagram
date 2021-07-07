@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--loginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" title="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,9 @@
                                 <rect key="frame" x="30" y="251" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jOa-T9-WY6"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="524-Vf-6KI">
                                 <rect key="frame" x="30" y="301" width="354" height="34"/>
@@ -36,16 +39,14 @@
                                 <rect key="frame" x="30" y="351" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hoV-pd-0Tu"/>
-                                    <action selector="loginPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QEz-nP-wk2"/>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p5G-JV-SVl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynl-gG-V7X">
                                 <rect key="frame" x="336" y="351" width="48" height="30"/>
                                 <state key="normal" title="Signup"/>
                                 <connections>
-                                    <action selector="signupPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Dc-3a-qUj"/>
-                                    <action selector="signupPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OAZ-9b-JrF"/>
+                                    <action selector="signupPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BHq-8j-FrS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -82,21 +83,41 @@
             </objects>
             <point key="canvasLocation" x="20" y="70"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="Lds-ex-54b">
             <objects>
-                <tableViewController id="omo-QP-Qv6" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Home" title="Home" id="omo-QP-Qv6" customClass="HomeViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gk5-ei-aty">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HsO-vK-jBK">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="302" id="HsO-vK-jBK">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="302"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HsO-vK-jBK" id="Gb4-k4-e1Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="302"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSX-3H-J8z">
+                                            <rect key="frame" x="28" y="270" width="358" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4EO-m7-XeY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4EO-m7-XeY" firstAttribute="leading" secondItem="Gb4-k4-e1Z" secondAttribute="leading" id="M5b-x7-0oC"/>
+                                        <constraint firstAttribute="trailing" secondItem="4EO-m7-XeY" secondAttribute="trailing" id="McP-KQ-yQo"/>
+                                        <constraint firstItem="DSX-3H-J8z" firstAttribute="top" secondItem="4EO-m7-XeY" secondAttribute="bottom" constant="8" id="RNe-pR-Ged"/>
+                                        <constraint firstItem="4EO-m7-XeY" firstAttribute="top" secondItem="Gb4-k4-e1Z" secondAttribute="top" id="pUn-1i-AVM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="DSX-3H-J8z" secondAttribute="trailing" constant="8" id="rO3-tz-aeI"/>
+                                        <constraint firstItem="DSX-3H-J8z" firstAttribute="bottom" secondItem="Gb4-k4-e1Z" secondAttribute="bottomMargin" id="wji-qR-VlP"/>
+                                        <constraint firstItem="DSX-3H-J8z" firstAttribute="leading" secondItem="Gb4-k4-e1Z" secondAttribute="leadingMargin" constant="8" id="zd2-AX-dm5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -105,18 +126,25 @@
                             <outlet property="delegate" destination="omo-QP-Qv6" id="4KA-cN-hy8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="PzG-c5-aS0">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="BsF-Sb-Lvn"/>
+                    <navigationItem key="navigationItem" title="Home Feed" id="PzG-c5-aS0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="BsF-Sb-Lvn">
+                            <connections>
+                                <action selector="logOutPushed:" destination="omo-QP-Qv6" id="DMY-mK-jOE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="logoutButton" destination="BsF-Sb-Lvn" id="T6E-Br-ezk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXk-Sg-dTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="948" y="820"/>
+            <point key="canvasLocation" x="947.82608695652186" y="819.64285714285711"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--AuthenticatedViewController-->
         <scene sceneID="Od6-ya-7Hx">
             <objects>
-                <navigationController id="S0U-hM-Pxz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AuthenticatedViewController" title="AuthenticatedViewController" id="S0U-hM-Pxz" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ptp-jo-wYx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
