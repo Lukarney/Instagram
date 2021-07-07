@@ -19,13 +19,24 @@
     // Override point for customization after application launch.
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
-            configuration.applicationId = @"S9Aa7jYFaW5ZE9MD1G19FCYbLti4VeqGtqrRbR0G"; // <- UPDATE
-            configuration.clientKey = @"Z9sG6nrnMTg2SM4JYkAZGqRH3gzEUXs2iXCDPswZ"; // <- UPDATE
+            configuration.applicationId = @"S9Aa7jYFaW5ZE9MD1G19FCYbLti4VeqGtqrRbR0G";
+            configuration.clientKey = @"Z9sG6nrnMTg2SM4JYkAZGqRH3gzEUXs2iXCDPswZ";
             configuration.server = @"https://parseapi.back4app.com";
         }];
 
         [Parse initializeWithConfiguration:config];
-    
+        // Saves a dictionary (PFObject) that automatically creates columns in parse table from the keys
+        PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
+         gameScore[@"score"] = @1337;
+         gameScore[@"playerName"] = @"Sean Plott";
+         gameScore[@"cheatMode"] = @NO;
+         [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+          if (succeeded) {
+                 NSLog(@"Object saved!");
+          } else {
+                 NSLog(@"Error: %@", error.description);
+          }
+         }];
     
     return YES;
 }
