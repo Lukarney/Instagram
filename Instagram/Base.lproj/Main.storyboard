@@ -92,7 +92,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="302" id="HsO-vK-jBK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="302" id="HsO-vK-jBK" customClass="PostCell">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="302"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HsO-vK-jBK" id="Gb4-k4-e1Z">
@@ -119,6 +119,10 @@
                                         <constraint firstItem="DSX-3H-J8z" firstAttribute="leading" secondItem="Gb4-k4-e1Z" secondAttribute="leadingMargin" constant="8" id="zd2-AX-dm5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="postDescription" destination="DSX-3H-J8z" id="OF3-YA-wJT"/>
+                                    <outlet property="postPicture" destination="4EO-m7-XeY" id="dzH-TI-ofx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -132,6 +136,11 @@
                                 <action selector="logOutPushed:" destination="omo-QP-Qv6" id="DMY-mK-jOE"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="i4f-jT-r2B">
+                            <connections>
+                                <segue destination="bjx-75-ylz" kind="presentation" id="VcZ-Hz-GxB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="logoutButton" destination="BsF-Sb-Lvn" id="T6E-Br-ezk"/>
@@ -140,6 +149,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXk-Sg-dTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947.82608695652186" y="819.64285714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vhb-Hq-s8p">
+            <objects>
+                <navigationController id="bjx-75-ylz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wPf-SE-wDt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CCp-IS-LYh" kind="relationship" relationship="rootViewController" id="rL8-Am-xLV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HWg-Ce-R4Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2107" y="820"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="sr7-bR-pNq">
+            <objects>
+                <viewController id="CCp-IS-LYh" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VsC-S1-m8O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lc1-1S-jei">
+                                <rect key="frame" x="20" y="71" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erR-Ph-LCf">
+                                <rect key="frame" x="20" y="71" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="tap Here to add image">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="imagePressed:" destination="CCp-IS-LYh" eventType="touchUpInside" id="zXZ-d2-XcX"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Hl-tB-6cA">
+                                <rect key="frame" x="20" y="249" width="216" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ArF-RL-U3p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y2z-T8-77e">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1De-YQ-tFg">
+                            <connections>
+                                <action selector="cancelPressed:" destination="CCp-IS-LYh" id="fIM-7J-cAO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="KHI-DJ-l2Y">
+                            <connections>
+                                <action selector="sharePressed:" destination="CCp-IS-LYh" id="v0v-HP-FK8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photoDescription" destination="4Hl-tB-6cA" id="9JJ-Cf-hJ4"/>
+                        <outlet property="photoSelected" destination="Lc1-1S-jei" id="l7J-np-4Qg"/>
+                        <outlet property="photoSelectorButton" destination="erR-Ph-LCf" id="JeC-3W-9dg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yaN-Sb-PWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2985.507246376812" y="819.64285714285711"/>
         </scene>
         <!--AuthenticatedViewController-->
         <scene sceneID="Od6-ya-7Hx">
@@ -159,8 +241,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

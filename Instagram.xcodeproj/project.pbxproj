@@ -19,6 +19,9 @@
 		B9E5ACF02694DC8100E348E3 /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5ACEF2694DC8100E348E3 /* InstagramUITests.m */; };
 		B9E5AD0826961AD000E348E3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD0726961AD000E348E3 /* LoginViewController.m */; };
 		B9E5AD0B2696304200E348E3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD0A2696304200E348E3 /* HomeViewController.m */; };
+		B9E5AD1626978E8200E348E3 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD1526978E8200E348E3 /* ComposeViewController.m */; };
+		B9E5AD192697955B00E348E3 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD182697955B00E348E3 /* PostCell.m */; };
+		B9E5AD1C26979A5A00E348E3 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD1B26979A5A00E348E3 /* Post.m */; };
 		E265397BBA2A9CA11848F45B /* Pods_Instagram_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD5EBD58115B6C18B02E014 /* Pods_Instagram_InstagramUITests.framework */; };
 		F577F22CD2FFB264AA999425 /* Pods_InstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37DC16EF01CED7F70EABBE8D /* Pods_InstagramTests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,12 @@
 		B9E5AD0726961AD000E348E3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B9E5AD092696304200E348E3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B9E5AD0A2696304200E348E3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B9E5AD1426978E8200E348E3 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		B9E5AD1526978E8200E348E3 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		B9E5AD172697955B00E348E3 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		B9E5AD182697955B00E348E3 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		B9E5AD1A26979A5A00E348E3 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		B9E5AD1B26979A5A00E348E3 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		BDD118FFC15AC80066C5888F /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C06A5A0216DF318B6AD66F25 /* Pods-Instagram-InstagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.debug.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB27A87B6C0561A6E8782CC5 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +189,8 @@
 				B9E5AD0726961AD000E348E3 /* LoginViewController.m */,
 				B9E5AD092696304200E348E3 /* HomeViewController.h */,
 				B9E5AD0A2696304200E348E3 /* HomeViewController.m */,
+				B9E5AD1426978E8200E348E3 /* ComposeViewController.h */,
+				B9E5AD1526978E8200E348E3 /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -187,6 +198,8 @@
 		B9E5ACFE26960EEE00E348E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B9E5AD172697955B00E348E3 /* PostCell.h */,
+				B9E5AD182697955B00E348E3 /* PostCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +207,8 @@
 		B9E5ACFF26960EFC00E348E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9E5AD1A26979A5A00E348E3 /* Post.h */,
+				B9E5AD1B26979A5A00E348E3 /* Post.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -451,7 +466,10 @@
 				B9E5ACD02694DC8000E348E3 /* ViewController.m in Sources */,
 				B9E5ACCA2694DC8000E348E3 /* AppDelegate.m in Sources */,
 				B9E5AD0826961AD000E348E3 /* LoginViewController.m in Sources */,
+				B9E5AD192697955B00E348E3 /* PostCell.m in Sources */,
+				B9E5AD1C26979A5A00E348E3 /* Post.m in Sources */,
 				B9E5ACDB2694DC8100E348E3 /* main.m in Sources */,
+				B9E5AD1626978E8200E348E3 /* ComposeViewController.m in Sources */,
 				B9E5ACCD2694DC8000E348E3 /* SceneDelegate.m in Sources */,
 				B9E5AD0B2696304200E348E3 /* HomeViewController.m in Sources */,
 			);
