@@ -6,6 +6,8 @@
 //
 
 #import "PostCell.h"
+#import "AFNetworking.h"
+
 
 @implementation PostCell
 
@@ -19,5 +21,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

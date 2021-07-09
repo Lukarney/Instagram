@@ -10,9 +10,14 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
+#import "Post.h"
+#import "PostCell.h"
+#import "ComposeViewController.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate >
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+@property (strong, nonatomic) NSMutableArray* arrayOfPosts;
 
 @end
 
@@ -20,6 +25,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    [self getPost];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -27,7 +40,27 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (void)getPost {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"InstagramPosts"];
+    query.limit = 20;
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    [query includeKey:@"photo"];
+    [query includeKey:@"description"];
+    query.limit = 20;
 
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.arrayOfPosts = (NSMutableArray *) posts;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
 #pragma mark - Table view data source
 
 - (IBAction)logOutPushed:(id)sender {
@@ -43,15 +76,53 @@
     }];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    
+    //configures rows
+    Post *post = self.arrayOfPosts[indexPath.row];
+    cell.postDescription.text = post[@"description"];
+    
+    //configure image display
+    PFFileObject *image = post[@"photo"];
+    NSURL *imageURL = [NSURL URLWithString:image.url];
+    [cell.postPicture setImageWithURL:imageURL];
+    
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.arrayOfPosts.count;
 }
+
+//- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+//
+//        // Create NSURL and NSURLRequest
+//
+//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+//                                                              delegate:nil
+//                                                         delegateQueue:[NSOperationQueue mainQueue]];
+//        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+//
+//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+//                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//
+//           // ... Use the new data to update the data source ...
+//
+//           // Reload the tableView now that there is new data
+//            [self.tableView reloadData];
+//
+//           // Tell the refreshControl to stop spinning
+//            [refreshControl endRefreshing];
+//
+//        }];
+//
+//        [task resume];
+//}
+
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

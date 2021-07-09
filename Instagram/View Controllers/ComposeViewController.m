@@ -46,7 +46,7 @@
         }
     }];
     //gets user
-    post[@"user"] = PFUser.currentUser;
+    post[@"author"] = PFUser.currentUser;
     
 }
 
