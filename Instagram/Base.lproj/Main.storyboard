@@ -86,7 +86,7 @@
         <!--Home-->
         <scene sceneID="Lds-ex-54b">
             <objects>
-                <tableViewController storyboardIdentifier="Home" title="Home" id="omo-QP-Qv6" customClass="HomeViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Home" title="Home" modalPresentationStyle="fullScreen" id="omo-QP-Qv6" customClass="HomeViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gk5-ei-aty">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -311,6 +311,7 @@
         <scene sceneID="Od6-ya-7Hx">
             <objects>
                 <navigationController storyboardIdentifier="AuthenticatedViewController" title="AuthenticatedViewController" id="S0U-hM-Pxz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pfU-ci-15V"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ptp-jo-wYx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>

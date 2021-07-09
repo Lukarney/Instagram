@@ -62,6 +62,10 @@
         }
     }];
 }
+
+-(void)didPost {
+    [self fetchPost];
+}
 #pragma mark - Table view data source
 
 - (IBAction)logOutPushed:(id)sender {

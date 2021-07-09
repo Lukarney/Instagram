@@ -29,7 +29,10 @@
     
     self.postCaption.text = self.post[@"description"];
     self.postDate.text = [self.post createdAt].shortTimeAgoSinceNow;
+    PFUser *user = self.post[@"author"];
+    self.postAuthor.text = user.username;
     
+    NSLog(@"%@", self.post[@"author"]);
     NSLog(@"%@", self.postCaption.text);
     
 }
