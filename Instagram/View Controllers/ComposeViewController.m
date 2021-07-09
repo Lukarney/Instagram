@@ -31,7 +31,9 @@
 
 - (IBAction)sharePressed:(id)sender {
     Post *post = [PFObject objectWithClassName:@"InstagramPosts"];
+    //get photo caption
     post[@"description"] = self.photoDescription.text;
+    NSLog(@"%@", post[@"description"]);
     //gets image and saves it
     NSData *imgData = UIImagePNGRepresentation(self.uiImageSelectedPost);
     post[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];

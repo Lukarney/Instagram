@@ -126,7 +126,7 @@
                                 <connections>
                                     <outlet property="postDescription" destination="DSX-3H-J8z" id="OF3-YA-wJT"/>
                                     <outlet property="postPicture" destination="4EO-m7-XeY" id="dzH-TI-ofx"/>
-                                    <segue destination="cLk-Rs-eIo" kind="presentation" id="W3G-KR-ghh"/>
+                                    <segue destination="cLk-Rs-eIo" kind="presentation" identifier="detailsView" id="W3G-KR-ghh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -143,7 +143,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="i4f-jT-r2B">
                             <connections>
-                                <segue destination="bjx-75-ylz" kind="presentation" id="VcZ-Hz-GxB"/>
+                                <segue destination="bjx-75-ylz" kind="presentation" identifier="composePost" id="VcZ-Hz-GxB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -171,49 +171,64 @@
             </objects>
             <point key="canvasLocation" x="948" y="1576"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="iQR-hl-OWJ">
             <objects>
-                <viewController id="twt-Ko-6ZV" sceneMemberID="viewController">
+                <viewController id="twt-Ko-6ZV" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hJ3-oN-VZi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="avL-ne-kvk">
+                                <rect key="frame" x="16" y="125" width="382" height="382"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="avL-ne-kvk" secondAttribute="height" id="X1L-lW-5AL"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xai-CF-PUc">
-                                <rect key="frame" x="16" y="483" width="382" height="20.5"/>
+                                <rect key="frame" x="16" y="515" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bso-IP-J4p">
-                                <rect key="frame" x="16" y="64" width="382" height="21"/>
+                                <rect key="frame" x="16" y="96" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="avL-ne-kvk">
-                                <rect key="frame" x="16" y="93" width="382" height="382"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="avL-ne-kvk" secondAttribute="height" id="X1L-lW-5AL"/>
-                                </constraints>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPp-1f-NOk">
+                                <rect key="frame" x="16" y="64" width="382" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Ad-Lc-U8c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bso-IP-J4p" firstAttribute="top" secondItem="fPp-1f-NOk" secondAttribute="bottom" constant="8" id="7BH-bK-gNY"/>
+                            <constraint firstItem="8Ad-Lc-U8c" firstAttribute="trailing" secondItem="avL-ne-kvk" secondAttribute="trailing" constant="16" id="8ks-4I-sTQ"/>
                             <constraint firstItem="xai-CF-PUc" firstAttribute="leading" secondItem="avL-ne-kvk" secondAttribute="leading" id="9Sb-Vb-jxZ"/>
+                            <constraint firstItem="xai-CF-PUc" firstAttribute="top" secondItem="avL-ne-kvk" secondAttribute="bottom" constant="8" id="FZ1-dX-tll"/>
                             <constraint firstItem="xai-CF-PUc" firstAttribute="trailing" secondItem="avL-ne-kvk" secondAttribute="trailing" id="Gqp-M0-BdR"/>
-                            <constraint firstItem="8Ad-Lc-U8c" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xai-CF-PUc" secondAttribute="bottom" constant="8" id="L2R-lf-bZ9"/>
-                            <constraint firstItem="avL-ne-kvk" firstAttribute="leading" secondItem="8Ad-Lc-U8c" secondAttribute="leading" constant="16" id="Spo-OV-Jc2"/>
-                            <constraint firstItem="avL-ne-kvk" firstAttribute="top" secondItem="bso-IP-J4p" secondAttribute="bottom" constant="8" id="WOp-7z-Q7t"/>
-                            <constraint firstItem="8Ad-Lc-U8c" firstAttribute="trailing" secondItem="avL-ne-kvk" secondAttribute="trailing" constant="16" id="YbH-w4-j2F"/>
+                            <constraint firstItem="avL-ne-kvk" firstAttribute="leading" secondItem="fPp-1f-NOk" secondAttribute="leading" id="H8z-MD-CDX"/>
+                            <constraint firstItem="avL-ne-kvk" firstAttribute="leading" secondItem="8Ad-Lc-U8c" secondAttribute="leading" constant="16" id="gYt-wO-5BX"/>
                             <constraint firstItem="avL-ne-kvk" firstAttribute="trailing" secondItem="bso-IP-J4p" secondAttribute="trailing" id="kDI-Zi-7Cs"/>
-                            <constraint firstItem="bso-IP-J4p" firstAttribute="top" secondItem="8Ad-Lc-U8c" secondAttribute="top" constant="8" id="mFn-rz-fMe"/>
-                            <constraint firstItem="xai-CF-PUc" firstAttribute="top" secondItem="avL-ne-kvk" secondAttribute="bottom" constant="8" id="mUB-63-n42"/>
+                            <constraint firstItem="8Ad-Lc-U8c" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xai-CF-PUc" secondAttribute="bottom" constant="8" id="lmc-AG-jEZ"/>
+                            <constraint firstItem="fPp-1f-NOk" firstAttribute="top" secondItem="8Ad-Lc-U8c" secondAttribute="top" constant="8" id="tOW-Fp-Nfs"/>
                             <constraint firstItem="avL-ne-kvk" firstAttribute="leading" secondItem="bso-IP-J4p" secondAttribute="leading" id="vK8-oD-YHB"/>
+                            <constraint firstItem="avL-ne-kvk" firstAttribute="trailing" secondItem="fPp-1f-NOk" secondAttribute="trailing" id="xwF-Yd-lfw"/>
+                            <constraint firstItem="avL-ne-kvk" firstAttribute="top" secondItem="bso-IP-J4p" secondAttribute="bottom" constant="8" id="ynq-qU-Kjv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JEd-vT-0o6"/>
+                    <connections>
+                        <outlet property="postAuthor" destination="fPp-1f-NOk" id="Q6a-rT-fZn"/>
+                        <outlet property="postCaption" destination="xai-CF-PUc" id="l2G-cU-Jk1"/>
+                        <outlet property="postDate" destination="bso-IP-J4p" id="aQ3-Pe-MPC"/>
+                        <outlet property="postImage" destination="avL-ne-kvk" id="vtD-Ij-0WK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTO-TC-6cv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

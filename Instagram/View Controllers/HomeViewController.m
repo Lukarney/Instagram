@@ -14,6 +14,8 @@
 #import "PostCell.h"
 #import "ComposeViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "SceneDelegate.h"
+#import "DetailsViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate >
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
@@ -30,9 +32,9 @@
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
     
-    
-    [self getPost];
+    [self fetchPost];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -40,10 +42,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (void)getPost {
+- (void)fetchPost {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"InstagramPosts"];
-    query.limit = 20;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     [query includeKey:@"photo"];
@@ -64,6 +65,12 @@
 #pragma mark - Table view data source
 
 - (IBAction)logOutPushed:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)self.view.window.windowScene.delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if(error != nil){
             NSLog(@"User log out failed: %@", error.localizedDescription);
@@ -74,6 +81,7 @@
         }
         
     }];
+    
 }
 
 
@@ -98,30 +106,30 @@
     return self.arrayOfPosts.count;
 }
 
-//- (void)beginRefresh:(UIRefreshControl *)refreshControl {
-//
-//        // Create NSURL and NSURLRequest
-//
-//        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-//                                                              delegate:nil
-//                                                         delegateQueue:[NSOperationQueue mainQueue]];
-//        session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-//
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-//                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//
-//           // ... Use the new data to update the data source ...
-//
-//           // Reload the tableView now that there is new data
-//            [self.tableView reloadData];
-//
-//           // Tell the refreshControl to stop spinning
-//            [refreshControl endRefreshing];
-//
-//        }];
-//
-//        [task resume];
-//}
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+
+        // Create NSURL and NSURLRequest
+    
+    PFQuery *request = [PFQuery queryWithClassName:@"InstagramPosts"];
+    [request orderByDescending:@"createdAt"];
+    [request includeKey:@"author"];
+    [request includeKey:@"photo"];
+    [request includeKey:@"description"];
+    request.limit = 20;
+
+    // fetch data asynchronously
+    [request findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.arrayOfPosts = (NSMutableArray *) posts;
+            [self.tableView reloadData];
+            [refreshControl endRefreshing];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+}
 
 
 /*
@@ -168,14 +176,34 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"%@", segue.identifier);
+    if([segue.identifier isEqualToString:@"composePost"]){
+
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"detailsView"]){
+        //[segue.identifier isEqualToString:@"showDetailTweet"]
+        //Get postcell to show in details page
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.arrayOfPosts[indexPath.row];
+        
+        NSLog(@"%@", post);
+        UINavigationController *nav = [segue destinationViewController];
+        DetailsViewController *detailsViewController = (DetailsViewController *)[nav topViewController];
+        detailsViewController.post = post;
+        NSLog(@"Tapping on a post!");
+        
+    }
+    
 }
-*/
 
 @end
