@@ -48,6 +48,19 @@ Here's a walkthrough of implemented user stories:
 Posting and details view:
 
 <img src='https://i.imgur.com/OEaMvn0.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Posting picture from phone:
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/9tSTOBn" data-context="false" ><a href="//imgur.com/a/9tSTOBn"></a></blockquote>
+
+login persistance:
+<img src='https://i.imgur.com/k071nOT.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+login and log out:
+<img src='https://i.imgur.com/iBIrZHp.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+Signup:
+<img src='https://i.imgur.com/ncwhyKi.gif title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 
 
