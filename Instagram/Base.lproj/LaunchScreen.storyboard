@@ -22,15 +22,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="lt3-fq-ZA9">
-                                <rect key="frame" x="151" y="378" width="113" height="141"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="lt3-fq-ZA9">
+                                <rect key="frame" x="149.5" y="278.5" width="115" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="IBj-GX-EU8"/>
+                                    <constraint firstAttribute="width" constant="115" id="rDR-RT-mqC"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0lG-ZZ-diz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7a3-Ci-Ndc"/>
+                            <constraint firstItem="0lG-ZZ-diz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DX9-w6-n8D"/>
+                            <constraint firstItem="lt3-fq-ZA9" firstAttribute="top" secondItem="0lG-ZZ-diz" secondAttribute="bottom" constant="20" id="Skr-m0-jcb"/>
+                            <constraint firstItem="0lG-ZZ-diz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hVy-b6-DuH"/>
+                            <constraint firstItem="lt3-fq-ZA9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lGL-kx-AGH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lt3-fq-ZA9" secondAttribute="bottom" constant="20" id="vDj-SW-NXg"/>
                             <constraint firstItem="0lG-ZZ-diz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1:2" id="ybM-u0-umv"/>
                         </constraints>
                     </view>

@@ -2,7 +2,7 @@
 
 **Name of your app** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **22** hours spent in total
 
 ## User Stories
 
@@ -45,8 +45,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+Posting and details view:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/OEaMvn0.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 
 GIF created with [Kap](https://getkap.co/).
 
